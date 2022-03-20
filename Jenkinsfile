@@ -13,7 +13,7 @@ pipeline{
         stage ('RUN'){        
             steps{
                 echo 'This is the Run stage';
-                sh 'kubernetes get nodes' ;
+                sh 'kubectl get nodes' ;
             }
         }
     } 
