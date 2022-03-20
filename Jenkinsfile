@@ -15,7 +15,7 @@ pipeline{
             agent {label 'k8s-control'}      
             steps{
                 echo 'This is the Run stage';
-                sh 'kubectl get nodes' ;
+                sh 'hostname' ;
             }
         }
     } 
