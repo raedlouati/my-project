@@ -1,6 +1,6 @@
 
 pipeline{
-    agent any
+    agent {label: nodes}
     stages{
         stage ('Build'){
             steps{
@@ -11,7 +11,7 @@ pipeline{
             }
         }
         stage ('RUN'){  
-            agent {k8s-control}      
+            agent {label: k8s-control}      
             steps{
                 echo 'This is the Run stage';
                 sh 'kubectl get nodes' ;
