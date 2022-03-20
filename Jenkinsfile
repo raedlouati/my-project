@@ -4,7 +4,7 @@ pipeline{
         stage ('Build'){
             steps{
                 echo 'This is the build stage';
-                ssh 'hostname > hostname.txt' ;
+                sh 'hostname > hostname.txt' ;
                 archiveArtifact 'hostname.txt' ;
             }
         }
