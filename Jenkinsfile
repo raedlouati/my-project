@@ -10,7 +10,8 @@ pipeline{
                 archiveArtifacts 'hostname.txt' ;
             }
         }
-        stage ('RUN'){        
+        stage ('RUN'){  
+            agent k8s-control      
             steps{
                 echo 'This is the Run stage';
                 sh 'kubectl get nodes' ;
