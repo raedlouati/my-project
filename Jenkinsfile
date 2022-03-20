@@ -9,6 +9,7 @@ pipeline{
                 sh 'uptime >> hostname.txt' ;
                 archiveArtifacts 'hostname.txt' ;
             }
+        }
         stage ('RUN'){        
             steps{
                 echo 'This is the Run stage';
