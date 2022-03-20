@@ -1,11 +1,9 @@
-pipeline {
+pipeline{
     agent any
-    stages {
-
-        stage ('Build') {
-
+    stages{
+        stage ('Build'){
             echo 'This is the build stage';
-            hostname > 'hostname.txt';
+            ssh 'hostname > hostname.txt' ;
             archiveArtifact 'hostname.txt' ;
         }
     } 
