@@ -15,7 +15,7 @@ pipeline{
             agent {label 'k8s-control'}      
             steps{
                 echo 'This is the Run stage';
-                sh 'hostname' ;
+                sh 'kubectl get all --all-namespaces' ;
             }
         }
     } 
