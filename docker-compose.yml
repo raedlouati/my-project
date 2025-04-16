@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  webapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+    restart: always
+    environment:
+      - PHP_MEMORY_LIMIT=512M
+      - UPLOAD_MAX_FILESIZE=20M
