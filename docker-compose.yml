@@ -9,7 +9,29 @@ services:
       - "8080:80"
     volumes:
       - .:/var/www/html
+      - ./var:/var/www/html/var
     restart: always
     environment:
+      - APP_ENV=dev
+      - APP_SECRET=1234567890abcdefghijklmn
+      - DATABASE_URL=mysql://symfony:symfony@db:3306/symfony?serverVersion=8.0
       - PHP_MEMORY_LIMIT=512M
       - UPLOAD_MAX_FILESIZE=20M
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: symfony
+      MYSQL_USER: symfony
+      MYSQL_PASSWORD: symfony
+    ports:
+      - "3306:3306"
+    volumes:
+      - db-data:/var/lib/mysql
+
+volumes:
+  db-data:
